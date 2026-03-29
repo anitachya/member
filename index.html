@@ -146,8 +146,80 @@ tbody td { padding: 12px 14px; vertical-align: top; }
 
 footer { background: var(--cream); border-top: 1px solid var(--border); padding: 26px 40px; text-align: center; font-size: 11px; color: var(--gray); font-family: 'Space Mono', monospace; letter-spacing: 1px; }
 
+/* CURRENT STATUS BANNER */
+.status-banner {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  color: var(--paper);
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+.status-banner::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(255,255,255,0.03) 79px, rgba(255,255,255,0.03) 80px);
+  pointer-events: none;
+}
+.status-inner { max-width: 1100px; margin: 0 auto; padding: 48px 40px; position: relative; z-index: 1; }
+.status-eyebrow { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 4px; color: #e0c97f; text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+.status-eyebrow::before { content: '◆'; font-size: 8px; }
+.status-title { font-family: 'Noto Serif TC', serif; font-size: clamp(22px, 4vw, 40px); font-weight: 900; line-height: 1.2; margin-bottom: 32px; }
+.status-title span { color: #e0c97f; }
+
+.status-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1); margin-bottom: 32px; }
+.status-block { background: rgba(255,255,255,0.04); padding: 24px; }
+.status-block-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 2px; color: rgba(245,240,232,0.4); text-transform: uppercase; margin-bottom: 8px; }
+.status-block-value { font-family: 'Space Mono', monospace; font-size: 28px; font-weight: 700; color: #e0c97f; line-height: 1; margin-bottom: 6px; }
+.status-block-desc { font-size: 12px; color: rgba(245,240,232,0.6); line-height: 1.5; }
+
+.platform-rows { display: flex; flex-direction: column; gap: 12px; }
+.platform-row { display: grid; grid-template-columns: 180px 120px 1fr; gap: 16px; align-items: start; padding: 16px 20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 2px; }
+.platform-row-name { font-weight: 700; font-size: 14px; line-height: 1.3; }
+.platform-row-price { font-family: 'Space Mono', monospace; font-size: 16px; font-weight: 700; color: #e0c97f; }
+.platform-row-desc { font-size: 12px; color: rgba(245,240,232,0.6); line-height: 1.6; }
+.platform-row-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 1px; padding: 2px 7px; border-radius: 2px; margin-bottom: 6px; background: rgba(224,201,127,0.2); color: #e0c97f; }
+
+.gap-alert { display: flex; align-items: center; gap: 16px; background: rgba(224,201,127,0.08); border: 1px solid rgba(224,201,127,0.25); padding: 16px 20px; margin-top: 20px; }
+.gap-alert-icon { font-size: 20px; flex-shrink: 0; }
+.gap-alert-text { font-size: 13px; color: rgba(245,240,232,0.75); line-height: 1.6; }
+.gap-alert-text strong { color: #e0c97f; }
+
+/* ENHANCED RECOMMENDATION */
+.rec-new { background: white; border: 2px solid var(--ink); padding: 40px; margin-bottom: 0; }
+.rec-new-header { margin-bottom: 32px; }
+.rec-new-eyebrow { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 3px; color: var(--gray); margin-bottom: 10px; }
+.rec-new-title { font-family: 'Noto Serif TC', serif; font-size: 26px; font-weight: 900; }
+
+.rec-timeline { display: flex; flex-direction: column; gap: 0; position: relative; }
+.rec-timeline::before { content: ''; position: absolute; left: 20px; top: 24px; bottom: 24px; width: 2px; background: var(--border); }
+.rec-item { display: grid; grid-template-columns: 44px 1fr; gap: 20px; padding-bottom: 28px; position: relative; }
+.rec-item:last-child { padding-bottom: 0; }
+.rec-dot { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; position: relative; z-index: 1; border: 2px solid var(--border); background: white; }
+.rec-item.priority-high .rec-dot { background: var(--ink); border-color: var(--ink); }
+.rec-item-body { padding-top: 8px; }
+.rec-item-title { font-family: 'Noto Serif TC', serif; font-size: 17px; font-weight: 900; margin-bottom: 8px; }
+.rec-item-desc { font-size: 13px; color: var(--gray); line-height: 1.7; margin-bottom: 10px; }
+.rec-item-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.rec-item-tag { font-size: 11px; padding: 3px 9px; border: 1px solid var(--border); border-radius: 2px; color: var(--gray); font-family: 'Space Mono', monospace; }
+.rec-item.priority-high .rec-item-tag { border-color: var(--ink); color: var(--ink); font-weight: 700; }
+
+.tier-proposal { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 32px; padding-top: 28px; border-top: 1px solid var(--border); }
+.tier-proposal-card { border: 1px solid var(--border); padding: 18px; position: relative; }
+.tier-proposal-card.current { background: var(--cream); }
+.tier-proposal-card.new { border-color: var(--ink); border-width: 2px; }
+.tier-proposal-card.new::before { content: 'NEW'; position: absolute; top: -10px; left: 14px; background: var(--ink); color: var(--paper); font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 2px; padding: 2px 7px; }
+.tp-badge { font-size: 10px; font-weight: 700; letter-spacing: 1px; margin-bottom: 8px; color: var(--gray); }
+.tp-price { font-family: 'Space Mono', monospace; font-size: 22px; font-weight: 700; color: var(--ink); line-height: 1; margin-bottom: 4px; }
+.tp-name { font-family: 'Noto Serif TC', serif; font-size: 14px; font-weight: 900; margin-bottom: 10px; color: var(--ink); }
+.tp-features { list-style: none; font-size: 12px; color: var(--gray); line-height: 1.8; }
+.tp-features li::before { content: '→ '; }
+.tp-ref { margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--border); font-size: 10px; color: var(--gray); font-family: 'Space Mono', monospace; }
+
 @media (max-width: 768px) {
   .cat-intro-grid, .creators-grid, .insights-grid, .rec-cards, .two-col { grid-template-columns: 1fr; }
+  .status-grid { grid-template-columns: 1fr; }
+  .platform-row { grid-template-columns: 1fr; gap: 6px; }
+  .tier-proposal { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 600px) {
   header { padding: 36px 20px; }
@@ -159,13 +231,59 @@ footer { background: var(--cream); border-top: 1px solid var(--border); padding:
 </head>
 <body>
 
+<!-- CURRENT STATUS BANNER -->
+<div class="status-banner">
+  <div class="status-inner">
+    <div class="status-eyebrow">單程旅行社 · 現況快照 · 2025–2026</div>
+    <div class="status-title">我們在哪裡？<br><span>單程旅行社 現行會員與產品架構</span></div>
+    <div class="status-grid">
+      <div class="status-block">
+        <div class="status-block-label">YouTube 會員人數</div>
+        <div class="status-block-value">95</div>
+        <div class="status-block-desc">核心鐵粉，黏著度極高的種子社群</div>
+      </div>
+      <div class="status-block">
+        <div class="status-block-label">目前最低月費</div>
+        <div class="status-block-value">$75</div>
+        <div class="status-block-desc">YouTube 單一方案，專屬勳章與貼圖</div>
+      </div>
+      <div class="status-block">
+        <div class="status-block-label">最高方案客單價</div>
+        <div class="status-block-value">$2,000</div>
+        <div class="status-block-desc">嘖嘖一年 VIP 陪跑計畫（年費制）</div>
+      </div>
+    </div>
+    <div class="platform-rows">
+      <div class="platform-row">
+        <div><div class="platform-row-tag">▶ YouTube 會員</div><div class="platform-row-name">基礎支持方案</div></div>
+        <div class="platform-row-price">$75 / 月</div>
+        <div class="platform-row-desc">專屬勳章、貼圖，與冬瓜社長互動的心理歸屬感。目前 <strong style="color:#e0c97f;">約 95 人</strong>，是整個會員體系的種子核心鐵粉層。</div>
+      </div>
+      <div class="platform-row">
+        <div><div class="platform-row-tag">嘖嘖 · 年費制</div><div class="platform-row-name">一年 VIP 陪跑計畫</div></div>
+        <div class="platform-row-price">~$2,000 / 年</div>
+        <div class="platform-row-desc">實體行李包＋書寫帶領工具 · Line 專屬社群（私密即時互動） · 每週書寫帶領 · 專家解惑媒合。定位接近<strong style="color:#e0c97f;">顧問 / 線上教育</strong>，遠超一般 YouTuber 訂閱邏輯。</div>
+      </div>
+      <div class="platform-row">
+        <div><div class="platform-row-tag">B2B · 企業團購</div><div class="platform-row-name">企業 / 團體方案</div></div>
+        <div class="platform-row-price">洽談</div>
+        <div class="platform-row-desc">針對企業主或團體提供批量「行李包」與生命教育服務。其他 YouTuber 幾乎無此模式，是單程旅行社的獨特優勢。</div>
+      </div>
+    </div>
+    <div class="gap-alert">
+      <div class="gap-alert-icon">⚠️</div>
+      <div class="gap-alert-text"><strong>定價斷層警示：</strong>目前 $75（月費）直接跳到 $2,000（年費），中間缺乏過渡方案。對比同類創作者，這個區間正是轉化率最高的「主力付費層」。填補此缺口是下一階段的核心課題。</div>
+    </div>
+  </div>
+</div>
+
 <header>
   <div class="header-inner">
     <div class="header-tag">TAIWAN YOUTUBER MEMBERSHIP RESEARCH 2024–2025</div>
     <h1>台灣 YouTuber<br>會員制度<em>全攻略</em></h1>
     <p class="header-sub">深度解析 12 位台灣頂尖創作者的付費會員策略、定價邏輯與核心價值主張。<strong style="color:var(--gold);">點擊任一金額方案，即可展開詳細福利內容。</strong></p>
     <div class="header-stats">
-      <div class="stat-item"><div class="stat-num">12</div><div class="stat-label">創作者分析</div></div>
+      <div class="stat-item"><div class="stat-num">14</div><div class="stat-label">創作者分析</div></div>
       <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">內容分類</div></div>
       <div class="stat-item"><div class="stat-num">$45–3200</div><div class="stat-label">月費範圍</div></div>
       <div class="stat-item"><div class="stat-num">4+</div><div class="stat-label">主要平台</div></div>
@@ -175,11 +293,12 @@ footer { background: var(--cream); border-top: 1px solid var(--border); padding:
 
 <nav>
   <div class="nav-inner">
+    <a class="nav-btn" href=".status-banner">◆ 單程現況</a>
     <a class="nav-btn" href="#categories">類型分析</a>
     <a class="nav-btn" href="#creators">創作者詳解</a>
     <a class="nav-btn" href="#comparison">比較表格</a>
     <a class="nav-btn" href="#insights">關鍵洞察</a>
-    <a class="nav-btn" href="#recommendation">單程旅行社建議</a>
+    <a class="nav-btn" href="#recommendation">◆ 優化建議</a>
   </div>
 </nav>
 
@@ -218,293 +337,49 @@ footer { background: var(--cream); border-top: 1px solid var(--border); padding:
     <!-- 志祺七七 -->
     <div class="creator-card">
       <div class="card-header">
-        <div class="avatar" style="background:var(--teal-pale);color:var(--teal);font-weight:900;font-family:'Noto Serif TC',serif;font-size:15px;">七七</div>
-        <div class="creator-meta">
-          <h3>志祺七七</h3>
-          <span class="platform-badge">▶ YouTube</span><span class="cat-tag k">知識觀點</span>
-          <div class="subscribers">約 120 萬訂閱</div>
-        </div>
+        <div class="avatar" style="background:var(--teal-pale);color:var(--teal);font-weight:900;font-family:'Noto Serif TC',serif;font-size:13px;">七七</div>
+        <div class="creator-meta"><h3>志祺七七</h3><span class="platform-badge">▶ YouTube</span><span class="cat-tag k">知識觀點</span><div class="subscribers">約 120 萬訂閱</div></div>
       </div>
       <div class="card-body">
         <div class="tier-hint">↓ 點擊方案查看福利</div>
         <div class="pricing-tiers">
-          <button class="tier-btn" onclick="toggleTier(this,'zhiqi-1')"><span class="tier-price-label">$45</span><span class="tier-name-label">支持志祺</span></button>
-          <button class="tier-btn" onclick="toggleTier(this,'zhiqi-2')"><span class="tier-price-label">$200</span><span class="tier-name-label">想看更多</span></button>
-          <button class="tier-btn" onclick="toggleTier(this,'zhiqi-3')"><span class="tier-price-label">$600</span><span class="tier-name-label">深度參與</span></button>
+          <button class="tier-btn" onclick="toggleTier(this,'zhiqi-1')"><span class="tier-price-label">$75</span><span class="tier-name-label">乾爹娘</span></button>
+          <button class="tier-btn" onclick="toggleTier(this,'zhiqi-2')"><span class="tier-price-label">$250</span><span class="tier-name-label">乾阿公阿嬤</span></button>
         </div>
         <div class="tier-detail" id="zhiqi-1"><div class="tier-detail-inner">
-          <div class="tier-detail-name"><span class="price-chip">$45</span>支持志祺與團隊</div>
-          <ul class="tier-benefits"><li>專屬徽章（會員勳章）</li><li>自訂貼圖（專屬 emoji）</li></ul>
+          <div class="tier-detail-name"><span class="price-chip">$75</span>乾爹娘</div>
+          <ul class="tier-benefits"><li>七七議題許願池</li><li>企劃真心話影片</li><li>會員專屬影片</li><li>志祺的祝福</li></ul>
         </div></div>
         <div class="tier-detail" id="zhiqi-2"><div class="tier-detail-inner">
-          <div class="tier-detail-name"><span class="price-chip">$200</span>想看更多志祺</div>
-          <ul class="tier-benefits"><li>包含 $45 全部福利</li><li>會員限定影片（幕後花絮、企劃過程、志祺日常碎碎念）</li><li>搶先收看新影片</li></ul>
+          <div class="tier-detail-name"><span class="price-chip">$250</span>乾阿公阿嬤</div>
+          <ul class="tier-benefits"><li>志祺滿滿的祝福</li></ul>
+          <p class="tier-note">✦ 最高階純支持性質，強調情感回饋</p>
         </div></div>
-        <div class="tier-detail" id="zhiqi-3"><div class="tier-detail-inner">
-          <div class="tier-detail-name"><span class="price-chip">$600</span>深度參與</div>
-          <ul class="tier-benefits"><li>包含 $45 + $200 全部福利</li><li>參與社群投票與企劃討論</li><li>一起決定下個熱門議題的切入點</li><li>高頻率互動回饋</li></ul>
-        </div></div>
-        <div class="key-value"><span class="key-value-label">核心策略</span><span class="key-value-text">低門檻 ＋ 參與製作過程</span></div>
+        <div class="key-value"><span class="key-value-label">核心策略</span><span class="key-value-text">議題許願池 ＋ 創作者個人祝福連結</span></div>
       </div>
     </div>
 
-    <!-- 阿滴英文 -->
+    <!-- 阿滴 -->
     <div class="creator-card">
       <div class="card-header">
         <div class="avatar" style="background:var(--teal-pale);">🎓</div>
-        <div class="creator-meta">
-          <h3>阿滴英文</h3>
-          <span class="platform-badge">🅿 PressPlay</span><span class="platform-badge">▶ YT</span><span class="cat-tag k">知識觀點</span>
-          <div class="subscribers">約 281 萬訂閱</div>
-        </div>
+        <div class="creator-meta"><h3>阿滴</h3><span class="platform-badge">▶ YouTube</span><span class="cat-tag k">知識觀點</span><div class="subscribers">約 281 萬訂閱</div></div>
       </div>
       <div class="card-body">
         <div class="tier-hint">↓ 點擊方案查看福利</div>
         <div class="pricing-tiers">
-          <button class="tier-btn" onclick="toggleTier(this,'adu-1')"><span class="tier-price-label">$50</span><span class="tier-name-label">純支持</span></button>
-          <button class="tier-btn" onclick="toggleTier(this,'adu-2')"><span class="tier-price-label">$150</span><span class="tier-name-label">進階支持</span></button>
-          <button class="tier-btn" onclick="toggleTier(this,'adu-3')"><span class="tier-price-label">$300</span><span class="tier-name-label">學習增量</span></button>
-          <button class="tier-btn" onclick="toggleTier(this,'adu-4')"><span class="tier-price-label">$800+</span><span class="tier-name-label">進階實體</span></button>
+          <button class="tier-btn" onclick="toggleTier(this,'adu-1')"><span class="tier-price-label">$100</span><span class="tier-name-label">細水長流</span></button>
+          <button class="tier-btn" onclick="toggleTier(this,'adu-2')"><span class="tier-price-label">$600</span><span class="tier-name-label">排山倒海</span></button>
         </div>
         <div class="tier-detail" id="adu-1"><div class="tier-detail-inner">
-          <div class="tier-detail-name"><span class="price-chip">$50</span>純支持</div>
-          <ul class="tier-benefits"><li>專屬貼圖與徽章</li><li>限定社群貼文觀看</li></ul>
+          <div class="tier-detail-name"><span class="price-chip">$100</span>細水長流</div>
+          <ul class="tier-benefits"><li>留言和聊天室中顯示頻道會員徽章</li><li>可在留言和聊天室中使用自訂表情符號</li><li>收看會員專屬影片（補充單元、幕後花絮、外國行程懶人包）</li><li>收聽《滴scussion》：會員專屬 Podcast，討論阿滴創作生涯見聞並邀請好友上節目</li></ul>
         </div></div>
         <div class="tier-detail" id="adu-2"><div class="tier-detail-inner">
-          <div class="tier-detail-name"><span class="price-chip">$150</span>進階支持</div>
-          <ul class="tier-benefits"><li>包含 $50 全部福利</li><li>專屬單字卡下載</li><li>更多限定社群互動內容</li></ul>
+          <div class="tier-detail-name"><span class="price-chip">$600</span>排山倒海</div>
+          <ul class="tier-benefits"><li>包含 $100 全部福利</li><li>加入 LINE 社群：與阿滴的私人聊天區，獲取旅行即時更新</li><li>旅遊明信片：不定期收到阿滴旅行中寄出的實體明信片</li><li>《滴scussion》主題許願池：決定下一集 Podcast 來賓並向其提問</li></ul>
         </div></div>
-        <div class="tier-detail" id="adu-3"><div class="tier-detail-inner">
-          <div class="tier-detail-name"><span class="price-chip">$300–$500</span>學習增量</div>
-          <ul class="tier-benefits"><li>包含上層全部福利</li><li>每月數位教學講義（PDF 下載）</li><li>每月一次限定直播（英文學習 Q&amp;A）</li><li>陪伴式學習體驗，不再單向觀看</li></ul>
-        </div></div>
-        <div class="tier-detail" id="adu-4"><div class="tier-detail-inner">
-          <div class="tier-detail-name"><span class="price-chip">$800+</span>進階實體</div>
-          <ul class="tier-benefits"><li>包含上層全部福利</li><li>實體刊物寄送（曾推出）</li><li>高階教學影片庫存取</li><li>「投資自我」完整學習資源包</li></ul>
-        </div></div>
-        <div class="key-value"><span class="key-value-label">核心策略</span><span class="key-value-text">投資自我成長 ＋ 陪伴式學習</span></div>
-      </div>
-    </div>
-
-    <!-- 超認真少年 -->
-    <div class="creator-card">
-      <div class="card-header">
-        <div class="avatar" style="background:var(--purple-pale);">⚙️</div>
-        <div class="creator-meta">
-          <h3>超認真少年</h3>
-          <span class="platform-badge">▶ YouTube</span><span class="cat-tag p">專業技術</span>
-          <div class="subscribers">約 50 萬訂閱</div>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="tier-hint">↓ 點擊方案查看福利</div>
-        <div class="pricing-tiers">
-          <button class="tier-btn" onclick="toggleTier(this,'super-1')"><span class="tier-price-label">$60</span><span class="tier-name-label">超認真主任</span></button>
-          <button class="tier-btn" onclick="toggleTier(this,'super-2')"><span class="tier-price-label">$300</span><span class="tier-name-label">超認真監工</span></button>
-          <button class="tier-btn" onclick="toggleTier(this,'super-3')"><span class="tier-price-label">$750</span><span class="tier-name-label">超認真乾爹</span></button>
-          <button class="tier-btn" onclick="toggleTier(this,'super-4')"><span class="tier-price-label">$3200</span><span class="tier-name-label">超認真棟樑</span></button>
-        </div>
-        <div class="tier-detail" id="super-1"><div class="tier-detail-inner">
-          <div class="tier-detail-name"><span class="price-chip">$60</span>超認真主任</div>
-          <ul class="tier-benefits"><li>影片命名權（部分參與）</li><li>專屬限定影片</li><li>專屬留言回覆機會</li></ul>
-        </div></div>
-        <div class="tier-detail" id="super-2"><div class="tier-detail-inner">
-          <div class="tier-detail-name"><span class="price-chip">$300</span>超認真監工</div>
-          <ul class="tier-benefits"><li>包含 $60 全部福利</li><li>商品折扣優惠</li><li>影片企劃許願池（提案權）</li><li>特定合作律師諮詢機會</li></ul>
-        </div></div>
-        <div class="tier-detail" id="super-3"><div class="tier-detail-inner">
-          <div class="tier-detail-name"><span class="price-chip">$750</span>超認真乾爹</div>
-          <ul class="tier-benefits"><li>包含 $60 + $300 全部福利</li><li>阿仔師親筆感謝小卡</li><li>有機會一起去看球賽（線下體驗）</li></ul>
-        </div></div>
-        <div class="tier-detail" id="super-4"><div class="tier-detail-inner">
-          <div class="tier-detail-name"><span class="price-chip">$3200</span>超認真棟樑</div>
-          <ul class="tier-benefits"><li>包含全部上層福利</li><li>持續一年可參加團隊年度尾牙</li><li>工業社群最高榮譽身份</li><li>與創作者深度連結（最高忠誠度）</li></ul>
-        </div></div>
-        <div class="key-value"><span class="key-value-label">核心策略</span><span class="key-value-text">使命感 ＋ 線下高端連結</span></div>
-      </div>
-    </div>
-
-    <!-- 老高與小茉 -->
-    <div class="creator-card">
-      <div class="card-header">
-        <div class="avatar" style="background:var(--orange-pale);">✨</div>
-        <div class="creator-meta">
-          <h3>老高與小茉</h3>
-          <span class="platform-badge">▶ YouTube</span><span class="cat-tag l">生活療癒</span>
-          <div class="subscribers">約 600 萬訂閱</div>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="tier-hint">↓ 點擊方案查看福利</div>
-        <div class="pricing-tiers">
-          <button class="tier-btn" onclick="toggleTier(this,'laogao-1')"><span class="tier-price-label">$300</span><span class="tier-name-label">五歲抬頭團</span></button>
-        </div>
-        <div class="tier-detail" id="laogao-1"><div class="tier-detail-inner">
-          <div class="tier-detail-name"><span class="price-chip">$300</span>五歲抬頭團（單一方案）</div>
-          <ul class="tier-benefits"><li>每週三更新一支會員專屬限定影片</li><li>內容更長、更閒聊，或主頻道審核較難通過的主題</li><li>專屬貼圖與徽章</li><li>對鐵粉的「特別禮物」定位</li></ul>
-          <p class="tier-note">✦ 單一方案極簡設計——固定高質量額外內容，策略明確</p>
-        </div></div>
-        <div class="key-value"><span class="key-value-label">核心策略</span><span class="key-value-text">每週多一支影片的實質特權</span></div>
-      </div>
-    </div>
-
-    <!-- 敏迪選讀 -->
-    <div class="creator-card">
-      <div class="card-header">
-        <div class="avatar" style="background:var(--teal-pale);">📰</div>
-        <div class="creator-meta">
-          <h3>敏迪選讀</h3>
-          <span class="platform-badge">嘖嘖</span><span class="platform-badge">自有App</span><span class="cat-tag k">知識觀點</span>
-          <div class="subscribers">嘖嘖千人訂閱者</div>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="tier-hint">↓ 點擊方案查看福利</div>
-        <div class="pricing-tiers">
-          <button class="tier-btn" onclick="toggleTier(this,'mindy-1')"><span class="tier-price-label">$59</span><span class="tier-name-label">單人方案</span></button>
-          <button class="tier-btn" onclick="toggleTier(this,'mindy-2')"><span class="tier-price-label">$109</span><span class="tier-name-label">雙人共享</span></button>
-          <button class="tier-btn" onclick="toggleTier(this,'mindy-3')"><span class="tier-price-label">$259</span><span class="tier-name-label">家庭五人</span></button>
-        </div>
-        <div class="tier-detail" id="mindy-1"><div class="tier-detail-inner">
-          <div class="tier-detail-name"><span class="price-chip">$59</span>單人方案</div>
-          <ul class="tier-benefits"><li>開通 App 專屬功能</li><li>無廣告純淨閱讀體驗</li><li>實體商品享 95 折</li><li>1 組 Email 帳號使用權</li></ul>
-        </div></div>
-        <div class="tier-detail" id="mindy-2"><div class="tier-detail-inner">
-          <div class="tier-detail-name"><span class="price-chip">$109</span>雙人共享方案</div>
-          <ul class="tier-benefits"><li>包含 $59 全部福利</li><li>提供 2 組 Email 帳號</li><li>適合情侶、室友共訂</li></ul>
-        </div></div>
-        <div class="tier-detail" id="mindy-3"><div class="tier-detail-inner">
-          <div class="tier-detail-name"><span class="price-chip">$259</span>家庭 / 五人方案</div>
-          <ul class="tier-benefits"><li>包含全部福利</li><li>提供 5 組 Email 帳號</li><li>適合朋友或同事團購，平均每人 $52</li></ul>
-        </div></div>
-        <div class="key-value"><span class="key-value-label">核心策略</span><span class="key-value-text">獨立自主 ＋ 無廣告純淨體驗</span></div>
-      </div>
-    </div>
-
-    <!-- 異色檔案 -->
-    <div class="creator-card">
-      <div class="card-header">
-        <div class="avatar" style="background:var(--purple-pale);">🔍</div>
-        <div class="creator-meta">
-          <h3>異色檔案</h3>
-          <span class="platform-badge">▶ YouTube</span><span class="cat-tag p">專業技術</span>
-          <div class="subscribers">約 100 萬訂閱</div>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="tier-hint">↓ 點擊方案查看福利</div>
-        <div class="pricing-tiers">
-          <button class="tier-btn" onclick="toggleTier(this,'dk-1')"><span class="tier-price-label">$45</span><span class="tier-name-label">初階支持</span></button>
-          <button class="tier-btn" onclick="toggleTier(this,'dk-2')"><span class="tier-price-label">$150</span><span class="tier-name-label">DK自修室</span></button>
-          <button class="tier-btn" onclick="toggleTier(this,'dk-3')"><span class="tier-price-label">$450</span><span class="tier-name-label">高階支持</span></button>
-        </div>
-        <div class="tier-detail" id="dk-1"><div class="tier-detail-inner">
-          <div class="tier-detail-name"><span class="price-chip">$45</span>初階支持</div>
-          <ul class="tier-benefits"><li>專屬徽章</li><li>自訂貼圖</li></ul>
-        </div></div>
-        <div class="tier-detail" id="dk-2"><div class="tier-detail-inner">
-          <div class="tier-detail-name"><span class="price-chip">$150</span>DK自修室</div>
-          <ul class="tier-benefits"><li>包含 $45 全部福利</li><li>會員專屬直播（DK自修室）</li><li>更深入的案件細節（不便在主頻道公開的內容）</li><li>專屬投票——決定下期案件主題</li><li>犯罪研究愛好者私密討論空間</li></ul>
-        </div></div>
-        <div class="tier-detail" id="dk-3"><div class="tier-detail-inner">
-          <div class="tier-detail-name"><span class="price-chip">$450</span>高階支持</div>
-          <ul class="tier-benefits"><li>包含上層全部福利</li><li>對 DK 與 Di掃 創作的強力經濟後盾</li><li>高階贊助者榮譽認同感</li></ul>
-        </div></div>
-        <div class="key-value"><span class="key-value-label">核心策略</span><span class="key-value-text">私密性 ＋ 禁忌內容吸引力</span></div>
-      </div>
-    </div>
-
-    <!-- 宇宙閨蜜分多奇 -->
-    <div class="creator-card">
-      <div class="card-header">
-        <div class="avatar" style="background:var(--orange-pale);">🌙</div>
-        <div class="creator-meta">
-          <h3>宇宙閨蜜分多奇</h3>
-          <span class="platform-badge">▶ YouTube</span><span class="cat-tag l">生活療癒</span>
-          <div class="subscribers">約 40 萬訂閱</div>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="tier-hint">↓ 點擊方案查看福利</div>
-        <div class="pricing-tiers">
-          <button class="tier-btn" onclick="toggleTier(this,'cosmos-1')"><span class="tier-price-label">$75</span><span class="tier-name-label">地球瓜瓜</span></button>
-          <button class="tier-btn" onclick="toggleTier(this,'cosmos-2')"><span class="tier-price-label">$200</span><span class="tier-name-label">太陽系瓜瓜</span></button>
-          <button class="tier-btn" onclick="toggleTier(this,'cosmos-3')"><span class="tier-price-label">$1600</span><span class="tier-name-label">銀河系瓜瓜</span></button>
-        </div>
-        <div class="tier-detail" id="cosmos-1"><div class="tier-detail-inner">
-          <div class="tier-detail-name"><span class="price-chip">$75</span>地球瓜瓜</div>
-          <ul class="tier-benefits"><li>會員專屬徽章</li><li>自訂貼圖</li><li>會員專屬幕後照片貼文</li></ul>
-        </div></div>
-        <div class="tier-detail" id="cosmos-2"><div class="tier-detail-inner">
-          <div class="tier-detail-name"><span class="price-chip">$200</span>太陽系瓜瓜</div>
-          <ul class="tier-benefits"><li>包含 $75 全部福利</li><li>會員專屬長影片</li><li>每月一次專屬直播</li><li>線下活動優先報名權（見面會等）</li></ul>
-        </div></div>
-        <div class="tier-detail" id="cosmos-3"><div class="tier-detail-inner">
-          <div class="tier-detail-name"><span class="price-chip">$1600</span>銀河系瓜瓜</div>
-          <ul class="tier-benefits"><li>包含上層全部福利</li><li>直播中被特別點名致謝</li><li>純支持性質——彰顯最高等級認同感</li></ul>
-        </div></div>
-        <div class="key-value"><span class="key-value-label">核心策略</span><span class="key-value-text">姐妹淘歸屬感 ＋ 私密小宇宙</span></div>
-      </div>
-    </div>
-
-    <!-- The DoDoMen 嘟嘟門 -->
-    <div class="creator-card">
-      <div class="card-header">
-        <div class="avatar" style="background:var(--orange-pale);">🚀</div>
-        <div class="creator-meta">
-          <h3>The DoDoMen 嘟嘟門</h3>
-          <span class="platform-badge">▶ YouTube</span><span class="cat-tag l">生活療癒</span>
-          <div class="subscribers">約 60 萬訂閱</div>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="tier-hint">↓ 點擊方案查看福利</div>
-        <div class="pricing-tiers">
-          <button class="tier-btn" onclick="toggleTier(this,'dodo-1')"><span class="tier-price-label">$75</span><span class="tier-name-label">潛力豆</span></button>
-          <button class="tier-btn" onclick="toggleTier(this,'dodo-2')"><span class="tier-price-label">$150</span><span class="tier-name-label">大豆豆</span></button>
-          <button class="tier-btn" onclick="toggleTier(this,'dodo-3')"><span class="tier-price-label">$300</span><span class="tier-name-label">傳奇豆豆</span></button>
-        </div>
-        <div class="tier-detail" id="dodo-1"><div class="tier-detail-inner">
-          <div class="tier-detail-name"><span class="price-chip">$75</span>潛力豆</div>
-          <ul class="tier-benefits"><li>專屬貼圖</li><li>會員徽章</li><li>優先留言回覆機會</li></ul>
-        </div></div>
-        <div class="tier-detail" id="dodo-2"><div class="tier-detail-inner">
-          <div class="tier-detail-name"><span class="price-chip">$150</span>大豆豆</div>
-          <ul class="tier-benefits"><li>包含 $75 全部福利</li><li>未公開側拍花絮影片</li><li>不定期會員專屬直播</li><li>新片搶先看（早於主頻道）</li></ul>
-        </div></div>
-        <div class="tier-detail" id="dodo-3"><div class="tier-detail-inner">
-          <div class="tier-detail-name"><span class="price-chip">$300</span>傳奇豆豆</div>
-          <ul class="tier-benefits"><li>包含上層全部福利</li><li>社群投票決定挑戰主題</li><li>深度互動機會與團隊連結</li></ul>
-        </div></div>
-        <div class="key-value"><span class="key-value-label">核心策略</span><span class="key-value-text">挑戰精神認同 ＋ 社群共創</span></div>
-      </div>
-    </div>
-
-    <!-- 壹加壹 -->
-    <div class="creator-card">
-      <div class="card-header">
-        <div class="avatar" style="background:var(--orange-pale);">💑</div>
-        <div class="creator-meta">
-          <h3>壹加壹</h3>
-          <span class="platform-badge">▶ YouTube</span><span class="cat-tag l">生活療癒</span>
-          <div class="subscribers">約 80 萬訂閱</div>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="tier-hint">↓ 點擊方案查看福利</div>
-        <div class="pricing-tiers">
-          <button class="tier-btn" onclick="toggleTier(this,'one-1')"><span class="tier-price-label">$60</span><span class="tier-name-label">俱樂部初級</span></button>
-          <button class="tier-btn" onclick="toggleTier(this,'one-2')"><span class="tier-price-label">$150</span><span class="tier-name-label">俱樂部高級</span></button>
-        </div>
-        <div class="tier-detail" id="one-1"><div class="tier-detail-inner">
-          <div class="tier-detail-name"><span class="price-chip">$60</span>壹加壹俱樂部 初級</div>
-          <ul class="tier-benefits"><li>專屬徽章</li><li>自訂貼圖</li><li>會員社群限定貼文</li></ul>
-        </div></div>
-        <div class="tier-detail" id="one-2"><div class="tier-detail-inner">
-          <div class="tier-detail-name"><span class="price-chip">$150</span>壹加壹俱樂部 高級</div>
-          <ul class="tier-benefits"><li>包含 $60 全部福利</li><li>每月 1～2 次會員專屬直播（兩人私下聊天 / 深夜電台）</li><li>限定桌布下載</li><li>像朋友一樣直接聊天的親密感</li></ul>
-        </div></div>
-        <div class="key-value"><span class="key-value-label">核心策略</span><span class="key-value-text">朋友關係 ＋ 生活化真實感</span></div>
+        <div class="key-value"><span class="key-value-label">核心策略</span><span class="key-value-text">Podcast 陪伴 ＋ 實體明信片連結</span></div>
       </div>
     </div>
 
@@ -512,32 +387,74 @@ footer { background: var(--cream); border-top: 1px solid var(--border); padding:
     <div class="creator-card">
       <div class="card-header">
         <div class="avatar" style="background:var(--teal-pale);">📜</div>
-        <div class="creator-meta">
-          <h3>Cheap（歷史特派員）</h3>
-          <span class="platform-badge">▶ YouTube</span><span class="cat-tag k">知識觀點</span>
-          <div class="subscribers">約 100 萬訂閱</div>
-        </div>
+        <div class="creator-meta"><h3>Cheap（歷史特派員）</h3><span class="platform-badge">▶ YouTube</span><span class="cat-tag k">知識觀點</span><div class="subscribers">約 100 萬訂閱</div></div>
       </div>
       <div class="card-body">
         <div class="tier-hint">↓ 點擊方案查看福利</div>
         <div class="pricing-tiers">
-          <button class="tier-btn" onclick="toggleTier(this,'cheap-1')"><span class="tier-price-label">$45</span><span class="tier-name-label">實習特派員</span></button>
-          <button class="tier-btn" onclick="toggleTier(this,'cheap-2')"><span class="tier-price-label">$150</span><span class="tier-name-label">資深特派員</span></button>
-          <button class="tier-btn" onclick="toggleTier(this,'cheap-3')"><span class="tier-price-label">$450+</span><span class="tier-name-label">總編乾爹</span></button>
+          <button class="tier-btn" onclick="toggleTier(this,'cheap-1')"><span class="tier-price-label">$30</span><span class="tier-name-label">凱薩</span></button>
+          <button class="tier-btn" onclick="toggleTier(this,'cheap-2')"><span class="tier-price-label">$75</span><span class="tier-name-label">漢尼拔</span></button>
+          <button class="tier-btn" onclick="toggleTier(this,'cheap-3')"><span class="tier-price-label">$300</span><span class="tier-name-label">拿破崙</span></button>
+          <button class="tier-btn" onclick="toggleTier(this,'cheap-4')"><span class="tier-price-label">$750</span><span class="tier-name-label">成吉思汗</span></button>
+          <button class="tier-btn" onclick="toggleTier(this,'cheap-5')"><span class="tier-price-label">$1600</span><span class="tier-name-label">亞歷山大</span></button>
         </div>
         <div class="tier-detail" id="cheap-1"><div class="tier-detail-inner">
-          <div class="tier-detail-name"><span class="price-chip">$45</span>實習特派員</div>
-          <ul class="tier-benefits"><li>專屬貼圖</li><li>徽章</li></ul>
+          <div class="tier-detail-name"><span class="price-chip">$30</span>凱薩</div>
+          <ul class="tier-benefits"><li>留言有專屬勳章，並且使用 cheap 獨家表情符號</li></ul>
         </div></div>
         <div class="tier-detail" id="cheap-2"><div class="tier-detail-inner">
-          <div class="tier-detail-name"><span class="price-chip">$150</span>資深特派員</div>
-          <ul class="tier-benefits"><li>包含 $45 全部福利</li><li>影片搶先收看（早於主頻道 12～24 小時）</li><li>直播中特殊身份組顯示</li><li>專屬社群討論區</li></ul>
+          <div class="tier-detail-name"><span class="price-chip">$75</span>漢尼拔</div>
+          <ul class="tier-benefits"><li>加入 cheap Line 群組</li><li>可在 cheap 專屬群組參與討論，並與歷史大師遊俠佐羅請教（筆戰）</li></ul>
         </div></div>
         <div class="tier-detail" id="cheap-3"><div class="tier-detail-inner">
-          <div class="tier-detail-name"><span class="price-chip">$450+</span>總編 / 乾爹級</div>
-          <ul class="tier-benefits"><li>包含上層全部福利</li><li>純贊助性質——支持聘請更多繪師與研究員</li><li>成為「歷史內容品質升級的共同推手」</li></ul>
+          <div class="tier-detail-name"><span class="price-chip">$300</span>拿破崙</div>
+          <ul class="tier-benefits"><li>每年專屬端午、中秋、聖誕電子賀卡</li><li>cheap 為你準備的獨家賀卡（每個人圖案皆不同）</li><li>賀卡皆出自 cheap 插畫家</li></ul>
         </div></div>
-        <div class="key-value"><span class="key-value-label">核心策略</span><span class="key-value-text">品質共同推手 ＋ 內容升級感</span></div>
+        <div class="tier-detail" id="cheap-4"><div class="tier-detail-inner">
+          <div class="tier-detail-name"><span class="price-chip">$750</span>成吉思汗</div>
+          <ul class="tier-benefits"><li>包含上層所有福利</li><li>專屬獨家【cheap插圖】生日賀卡</li><li>除了三大節日電子賀卡，cheap 另為你準備獨家生日賀卡</li></ul>
+        </div></div>
+        <div class="tier-detail" id="cheap-5"><div class="tier-detail-inner">
+          <div class="tier-detail-name"><span class="price-chip">$1600</span>亞歷山大</div>
+          <ul class="tier-benefits"><li>包含上層所有福利</li><li>cheap 將製作你喜歡的主題（例如「明末農民起義」「帖木兒」）</li></ul>
+          <p class="tier-note">✦ 頂級客製化：你親自決定 cheap 製作的歷史影片主題</p>
+        </div></div>
+        <div class="key-value"><span class="key-value-label">核心策略</span><span class="key-value-text">客製賀卡 ＋ Line 群討論 ＋ 影片主題決定權</span></div>
+      </div>
+    </div>
+
+    <!-- 超認真少年 -->
+    <div class="creator-card">
+      <div class="card-header">
+        <div class="avatar" style="background:var(--purple-pale);">⚙️</div>
+        <div class="creator-meta"><h3>超認真少年</h3><span class="platform-badge">▶ YouTube</span><span class="cat-tag p">專業技術</span><div class="subscribers">約 50 萬訂閱</div></div>
+      </div>
+      <div class="card-body">
+        <div class="tier-hint">↓ 點擊方案查看福利</div>
+        <div class="pricing-tiers">
+          <button class="tier-btn" onclick="toggleTier(this,'super-1')"><span class="tier-price-label">$60</span><span class="tier-name-label">超認真主任</span></button>
+          <button class="tier-btn" onclick="toggleTier(this,'super-2')"><span class="tier-price-label">$300</span><span class="tier-name-label">超認真監工</span></button>
+          <button class="tier-btn" onclick="toggleTier(this,'super-3')"><span class="tier-price-label">$750</span><span class="tier-name-label">超認真乾爹</span></button>
+          <button class="tier-btn" onclick="toggleTier(this,'super-4')"><span class="tier-price-label">$3,200</span><span class="tier-name-label">超認真棟樑</span></button>
+        </div>
+        <div class="tier-detail" id="super-1"><div class="tier-detail-inner">
+          <div class="tier-detail-name"><span class="price-chip">$60</span>超認真主任</div>
+          <ul class="tier-benefits"><li>留言和聊天室名稱顯示頻道會員徽章</li><li>留言和聊天室中使用自訂表情符號</li><li>頻道會員專屬影片</li><li>獲得最新影片的命名權</li><li>超認真輔導教室——解決你的專業疑問</li><li>超認真感謝</li></ul>
+        </div></div>
+        <div class="tier-detail" id="super-2"><div class="tier-detail-inner">
+          <div class="tier-detail-name"><span class="price-chip">$300</span>超認真監工</div>
+          <ul class="tier-benefits"><li>包含 $60 全部福利</li><li>超認真律師諮詢</li><li>商品折扣優惠</li><li>影片企劃許願池</li><li>超認真感謝因為有你</li></ul>
+        </div></div>
+        <div class="tier-detail" id="super-3"><div class="tier-detail-inner">
+          <div class="tier-detail-name"><span class="price-chip">$750</span>超認真乾爹</div>
+          <ul class="tier-benefits"><li>包含上層全部福利</li><li>一起去看球</li><li>阿仔師感謝小卡送你家</li></ul>
+        </div></div>
+        <div class="tier-detail" id="super-4"><div class="tier-detail-inner">
+          <div class="tier-detail-name"><span class="price-chip">$3,200</span>超認真棟樑</div>
+          <ul class="tier-benefits"><li>包含全部上層福利</li><li>持續一年，尾牙有留你的位置</li><li>你就是超認真啦！</li></ul>
+          <p class="tier-note">✦ 最高榮譽：每年尾牙實體席次</p>
+        </div></div>
+        <div class="key-value"><span class="key-value-label">核心策略</span><span class="key-value-text">命名權 ＋ 律師諮詢 ＋ 線下尾牙</span></div>
       </div>
     </div>
 
@@ -545,56 +462,312 @@ footer { background: var(--cream); border-top: 1px solid var(--border); padding:
     <div class="creator-card">
       <div class="card-header">
         <div class="avatar" style="background:var(--orange-pale);">🐾</div>
-        <div class="creator-meta">
-          <h3>浪浪別哭</h3>
-          <span class="platform-badge">官方平台</span><span class="cat-tag l">生活療癒</span>
-          <div class="subscribers">公益品牌</div>
-        </div>
+        <div class="creator-meta"><h3>浪浪別哭</h3><span class="platform-badge">▶ YouTube</span><span class="cat-tag l">生活療癒</span><div class="subscribers">公益品牌</div></div>
       </div>
       <div class="card-body">
         <div class="tier-hint">↓ 點擊方案查看福利</div>
         <div class="pricing-tiers">
-          <button class="tier-btn" onclick="toggleTier(this,'woof-1')"><span class="tier-price-label">$300</span><span class="tier-name-label">助養計畫</span></button>
-          <button class="tier-btn" onclick="toggleTier(this,'woof-2')"><span class="tier-price-label">$500</span><span class="tier-name-label">守護計畫</span></button>
-          <button class="tier-btn" onclick="toggleTier(this,'woof-3')"><span class="tier-price-label">$1000</span><span class="tier-name-label">領頭守護</span></button>
+          <button class="tier-btn" onclick="toggleTier(this,'woof-1')"><span class="tier-price-label">$100</span><span class="tier-name-label">一星級</span></button>
+          <button class="tier-btn" onclick="toggleTier(this,'woof-2')"><span class="tier-price-label">$200</span><span class="tier-name-label">二星級</span></button>
+          <button class="tier-btn" onclick="toggleTier(this,'woof-3')"><span class="tier-price-label">$300</span><span class="tier-name-label">三星級</span></button>
+          <button class="tier-btn" onclick="toggleTier(this,'woof-4')"><span class="tier-price-label">$750</span><span class="tier-name-label">四星級</span></button>
+          <button class="tier-btn" onclick="toggleTier(this,'woof-5')"><span class="tier-price-label">$1600</span><span class="tier-name-label">五星級</span></button>
+          <button class="tier-btn" onclick="toggleTier(this,'woof-6')"><span class="tier-price-label">$3200</span><span class="tier-name-label">六星級</span></button>
         </div>
         <div class="tier-detail" id="woof-1"><div class="tier-detail-inner">
-          <div class="tier-detail-name"><span class="price-chip">$300</span>助養計畫</div>
-          <ul class="tier-benefits"><li>電子感謝狀</li><li>浪浪近況電子報（看見你守護的毛孩）</li><li>店內用餐優惠券</li><li>訂閱費直接轉化為毛孩伙食費</li></ul>
+          <div class="tier-detail-name"><span class="price-chip">$100</span>一星級會員</div>
+          <ul class="tier-benefits"><li>留言和聊天室中顯示頻道會員徽章</li><li>留言和聊天室中使用自訂表情符號</li><li>相片和近況更新</li><li>每周會員專屬影片</li><li>每月會員桌布</li></ul>
         </div></div>
         <div class="tier-detail" id="woof-2"><div class="tier-detail-inner">
-          <div class="tier-detail-name"><span class="price-chip">$500</span>守護計畫</div>
-          <ul class="tier-benefits"><li>包含 $300 全部福利</li><li>訂閱費涵蓋伙食 + 部分醫療費</li><li>實體感謝狀寄送</li></ul>
+          <div class="tier-detail-name"><span class="price-chip">$200</span>二星級會員</div>
+          <ul class="tier-benefits"><li>包含 $100 全部福利</li><li>享有實體店用餐 85 折</li></ul>
         </div></div>
         <div class="tier-detail" id="woof-3"><div class="tier-detail-inner">
-          <div class="tier-detail-name"><span class="price-chip">$1000</span>領頭守護</div>
-          <ul class="tier-benefits"><li>包含上層全部福利</li><li>見證特定毛孩找到家的完整過程</li><li>社會價值最大化——真實改變一條生命</li></ul>
+          <div class="tier-detail-name"><span class="price-chip">$300</span>三星級會員</div>
+          <ul class="tier-benefits"><li>包含上層全部福利</li><li>點名想看哪隻浪浪、點名追蹤幸福</li><li>回應 QA 影片／腦閻把拔的狗勾疑難排解</li><li>會員專屬直播（一季一次）</li></ul>
         </div></div>
-        <div class="key-value"><span class="key-value-label">核心策略</span><span class="key-value-text">結果可見性 ＋ 社會價值實現</span></div>
+        <div class="tier-detail" id="woof-4"><div class="tier-detail-inner">
+          <div class="tier-detail-name"><span class="price-chip">$750</span>四星級會員</div>
+          <ul class="tier-benefits"><li>包含上層全部福利</li><li>投稿會員信箱</li><li>會員救援</li></ul>
+        </div></div>
+        <div class="tier-detail" id="woof-5"><div class="tier-detail-inner">
+          <div class="tier-detail-name"><span class="price-chip">$1600</span>五星級會員</div>
+          <ul class="tier-benefits"><li>包含上層全部福利</li><li>各種周邊商品 8 折優惠</li><li>年度提名（頻道會員相關正片片尾）</li><li>招待年度會員聚餐 / 手寫感謝信 / 回饋品禮一個</li></ul>
+        </div></div>
+        <div class="tier-detail" id="woof-6"><div class="tier-detail-inner">
+          <div class="tier-detail-name"><span class="price-chip">$3200</span>六星級會員</div>
+          <ul class="tier-benefits"><li>包含上層全部福利</li><li>專屬個人禮物</li></ul>
+          <p class="tier-note">✦ 六層方案最細緻，每層都有具體回饋，公益感貫穿全程</p>
+        </div></div>
+        <div class="key-value"><span class="key-value-label">核心策略</span><span class="key-value-text">毛孩公益 ＋ 實體聚餐 ＋ 六層細緻設計</span></div>
       </div>
     </div>
 
-    <!-- 我都OK啊 -->
+    <!-- 異色檔案 -->
     <div class="creator-card">
       <div class="card-header">
-        <div class="avatar" style="background:var(--orange-pale);">😄</div>
-        <div class="creator-meta">
-          <h3>我都OK啊</h3>
-          <span class="platform-badge">▶ YouTube</span><span class="cat-tag l">生活療癒</span>
-          <div class="subscribers">約 30 萬訂閱</div>
-        </div>
+        <div class="avatar" style="background:var(--purple-pale);">🔍</div>
+        <div class="creator-meta"><h3>異色檔案</h3><span class="platform-badge">▶ YouTube</span><span class="cat-tag p">專業技術</span><div class="subscribers">約 100 萬訂閱</div></div>
       </div>
       <div class="card-body">
         <div class="tier-hint">↓ 點擊方案查看福利</div>
         <div class="pricing-tiers">
-          <button class="tier-btn" onclick="toggleTier(this,'ok-1')"><span class="tier-price-label">$45</span><span class="tier-name-label">餵食計畫</span></button>
+          <button class="tier-btn" onclick="toggleTier(this,'dk-1')"><span class="tier-price-label">$75</span><span class="tier-name-label">異年級</span></button>
+          <button class="tier-btn" onclick="toggleTier(this,'dk-2')"><span class="tier-price-label">$100</span><span class="tier-name-label">異家人</span></button>
+          <button class="tier-btn" onclick="toggleTier(this,'dk-3')"><span class="tier-price-label">$300</span><span class="tier-name-label">異老大</span></button>
+        </div>
+        <div class="tier-detail" id="dk-1"><div class="tier-detail-inner">
+          <div class="tier-detail-name"><span class="price-chip">$75</span>異年級</div>
+          <ul class="tier-benefits"><li>留言和聊天室中顯示頻道會員徽章</li><li>留言和聊天室中使用自訂表情符號</li><li>會員專屬影片</li></ul>
+        </div></div>
+        <div class="tier-detail" id="dk-2"><div class="tier-detail-inner">
+          <div class="tier-detail-name"><span class="price-chip">$100</span>異家人</div>
+          <ul class="tier-benefits"><li>包含 $75 全部福利</li><li>巨嬰本月生存報告</li></ul>
+        </div></div>
+        <div class="tier-detail" id="dk-3"><div class="tier-detail-inner">
+          <div class="tier-detail-name"><span class="price-chip">$300</span>異老大</div>
+          <ul class="tier-benefits"><li>包含上層全部福利</li><li>只有會員才看得到的 ★鐵定被黃標★ 影片</li><li>向會員公開致謝</li></ul>
+          <p class="tier-note">✦ 核心賣點：主頻道因審查被黃標的禁忌影片，只開放會員</p>
+        </div></div>
+        <div class="key-value"><span class="key-value-label">核心策略</span><span class="key-value-text">禁忌黃標影片 ＋ 月報 ＋ 私密感</span></div>
+      </div>
+    </div>
+
+    <!-- 老高與小茉 -->
+    <div class="creator-card">
+      <div class="card-header">
+        <div class="avatar" style="background:var(--orange-pale);">✨</div>
+        <div class="creator-meta"><h3>老高與小茉 Mr &amp; Mrs Gao</h3><span class="platform-badge">▶ YouTube</span><span class="cat-tag l">生活療癒</span><div class="subscribers">約 600 萬訂閱</div></div>
+      </div>
+      <div class="card-body">
+        <div class="tier-hint">↓ 點擊方案查看福利</div>
+        <div class="pricing-tiers">
+          <button class="tier-btn" onclick="toggleTier(this,'laogao-1')"><span class="tier-price-label">$75</span><span class="tier-name-label">基礎加持</span></button>
+          <button class="tier-btn" onclick="toggleTier(this,'laogao-2')"><span class="tier-price-label">$100</span><span class="tier-name-label">開運除厄</span></button>
+          <button class="tier-btn" onclick="toggleTier(this,'laogao-3')"><span class="tier-price-label">$150</span><span class="tier-name-label">宇宙最強</span></button>
+          <button class="tier-btn" onclick="toggleTier(this,'laogao-4')"><span class="tier-price-label">$300</span><span class="tier-name-label">財富自由</span></button>
+        </div>
+        <div class="tier-detail" id="laogao-1"><div class="tier-detail-inner">
+          <div class="tier-detail-name"><span class="price-chip">$75</span>五歲抬頭基礎加持團</div>
+          <ul class="tier-benefits"><li>會員微章、表情符號</li><li>會員專享社區動態圖片</li><li>成為「五歲抬頭團」的一員</li><li>會員專享影片</li><li>首播會員專享聊天室</li></ul>
+        </div></div>
+        <div class="tier-detail" id="laogao-2"><div class="tier-detail-inner">
+          <div class="tier-detail-name"><span class="price-chip">$100</span>五歲抬頭開運除厄團</div>
+          <ul class="tier-benefits"><li>包含 $75 全部福利</li><li>成為「五歲抬頭開運除厄團」的一員</li><li>開運除厄團轉專享影片</li></ul>
+        </div></div>
+        <div class="tier-detail" id="laogao-3"><div class="tier-detail-inner">
+          <div class="tier-detail-name"><span class="price-chip">$150</span>五歲抬頭宇宙最強團</div>
+          <ul class="tier-benefits"><li>包含上層全部福利</li><li>宇宙最強團專享影片</li><li>成為「五歲抬頭宇宙最強團」的一員</li><li>部分財富自由團專享影片</li></ul>
+        </div></div>
+        <div class="tier-detail" id="laogao-4"><div class="tier-detail-inner">
+          <div class="tier-detail-name"><span class="price-chip">$300</span>五歲抬頭財富自由團</div>
+          <ul class="tier-benefits"><li>包含上層全部福利</li><li>財富自由團專享影片</li><li>成為「五歲抬頭財富自由團」的一員</li></ul>
+          <p class="tier-note">✦ 每個等級都有專屬影片系列與身份名稱，累積制設計</p>
+        </div></div>
+        <div class="key-value"><span class="key-value-label">核心策略</span><span class="key-value-text">累積式專屬影片 ＋ 團名身份認同</span></div>
+      </div>
+    </div>
+
+    <!-- 壹加壹 -->
+    <div class="creator-card">
+      <div class="card-header">
+        <div class="avatar" style="background:var(--orange-pale);">💑</div>
+        <div class="creator-meta"><h3>壹加壹</h3><span class="platform-badge">▶ YouTube</span><span class="cat-tag l">生活療癒</span><div class="subscribers">約 80 萬訂閱</div></div>
+      </div>
+      <div class="card-body">
+        <div class="tier-hint">↓ 點擊方案查看福利</div>
+        <div class="pricing-tiers">
+          <button class="tier-btn" onclick="toggleTier(this,'one-1')"><span class="tier-price-label">$75</span><span class="tier-name-label">洗壹粉</span></button>
+          <button class="tier-btn" onclick="toggleTier(this,'one-2')"><span class="tier-price-label">$300</span><span class="tier-name-label">超濃縮洗壹粉</span></button>
+          <button class="tier-btn" onclick="toggleTier(this,'one-3')"><span class="tier-price-label">$3200</span><span class="tier-name-label">高級洗壹機</span></button>
+        </div>
+        <div class="tier-detail" id="one-1"><div class="tier-detail-inner">
+          <div class="tier-detail-name"><span class="price-chip">$75</span>洗壹粉</div>
+          <ul class="tier-benefits"><li>會員微章、表情符號</li><li>正片不敢播，只好放這裡的花絮影片——每月一則</li></ul>
+        </div></div>
+        <div class="tier-detail" id="one-2"><div class="tier-detail-inner">
+          <div class="tier-detail-name"><span class="price-chip">$300</span>超濃縮洗壹粉</div>
+          <ul class="tier-benefits"><li>包含 $75 全部福利</li><li>會員專屬影片——工作室日常</li><li>一粒的海外伴手禮</li></ul>
+        </div></div>
+        <div class="tier-detail" id="one-3"><div class="tier-detail-inner">
+          <div class="tier-detail-name"><span class="price-chip">$3200</span>高級洗壹機</div>
+          <ul class="tier-benefits"><li>包含上層全部福利</li><li>你就是我們的爹娘（不可以能有人會訂吧！？）</li></ul>
+          <p class="tier-note">✦ 幽默感滿分：用自嘲方式設定最高方案，創造話題</p>
+        </div></div>
+        <div class="key-value"><span class="key-value-label">核心策略</span><span class="key-value-text">花絮影片 ＋ 實體伴手禮 ＋ 幽默感</span></div>
+      </div>
+    </div>
+
+    <!-- 宇宙閨蜜（身心靈） -->
+    <div class="creator-card">
+      <div class="card-header">
+        <div class="avatar" style="background:var(--orange-pale);">🌙</div>
+        <div class="creator-meta"><h3>宇宙閨蜜（身心靈）</h3><span class="platform-badge">▶ YouTube</span><span class="cat-tag l">生活療癒</span><div class="subscribers">約 40 萬訂閱</div></div>
+      </div>
+      <div class="card-body">
+        <div class="tier-hint">↓ 點擊方案查看福利</div>
+        <div class="pricing-tiers">
+          <button class="tier-btn" onclick="toggleTier(this,'cosmos-1')"><span class="tier-price-label">$100</span><span class="tier-name-label">地球瓜瓜</span></button>
+          <button class="tier-btn" onclick="toggleTier(this,'cosmos-2')"><span class="tier-price-label">$300</span><span class="tier-name-label">太陽系瓜瓜</span></button>
+          <button class="tier-btn" onclick="toggleTier(this,'cosmos-3')"><span class="tier-price-label">$3200</span><span class="tier-name-label">宇宙系瓜瓜</span></button>
+        </div>
+        <div class="tier-detail" id="cosmos-1"><div class="tier-detail-inner">
+          <div class="tier-detail-name"><span class="price-chip">$100</span>地球瓜瓜</div>
+          <ul class="tier-benefits"><li>優先回覆會員留言</li><li>優先報名實體與線上活動</li><li>社交媒體互動</li></ul>
+        </div></div>
+        <div class="tier-detail" id="cosmos-2"><div class="tier-detail-inner">
+          <div class="tier-detail-name"><span class="price-chip">$300</span>太陽系瓜瓜</div>
+          <ul class="tier-benefits"><li>包含 $100 全部福利</li><li>每月一支會員專屬影片</li><li>每月一次會員專屬直播</li><li>每月一則會員專屬電子報——更深入文字探討身心靈</li></ul>
+        </div></div>
+        <div class="tier-detail" id="cosmos-3"><div class="tier-detail-inner">
+          <div class="tier-detail-name"><span class="price-chip">$3200</span>宇宙系瓜瓜</div>
+          <ul class="tier-benefits"><li>包含上層全部福利</li><li>每月一支會員專屬影片</li><li>每月一次會員專屬直播</li><li>每月一則身心靈專屬電子報</li></ul>
+          <p class="tier-note">✦ $300 vs $3200 內容相同，$3200 為純精神支持與贊助</p>
+        </div></div>
+        <div class="key-value"><span class="key-value-label">核心策略</span><span class="key-value-text">身心靈電子報 ＋ 直播 ＋ 活動優先</span></div>
+      </div>
+    </div>
+
+    <!-- DoDoMen -->
+    <div class="creator-card">
+      <div class="card-header">
+        <div class="avatar" style="background:var(--orange-pale);">🐬</div>
+        <div class="creator-meta"><h3>DoDoMen 嘟嘟門</h3><span class="platform-badge">▶ YouTube</span><span class="cat-tag l">生活療癒</span><div class="subscribers">約 60 萬訂閱</div></div>
+      </div>
+      <div class="card-body">
+        <div class="tier-hint">↓ 點擊方案查看福利</div>
+        <div class="pricing-tiers">
+          <button class="tier-btn" onclick="toggleTier(this,'dodo-1')"><span class="tier-price-label">$100</span><span class="tier-name-label">海豚大使</span></button>
+          <button class="tier-btn" onclick="toggleTier(this,'dodo-2')"><span class="tier-price-label">$1600</span><span class="tier-name-label">海豚守護神</span></button>
+        </div>
+        <div class="tier-detail" id="dodo-1"><div class="tier-detail-inner">
+          <div class="tier-detail-name"><span class="price-chip">$100</span>海豚大使</div>
+          <ul class="tier-benefits"><li>留言和聊天室中顯示頻道會員徽章及自訂表情符號</li><li>每月專屬影片一支（花絮、NG 片段或更深入的日常紀錄）</li><li>【季行一善】每季把 10% 會員制所得捐給慈善機構</li><li>一年兩次線下聚會活動（粉絲見面會、特別企劃體驗或聚餐）</li><li>每月固定直播——分享頻道近況與未來規劃，線上即時 QA</li><li>不定期線上線下活動優惠、周邊優先購買、折扣碼與小禮物</li></ul>
+          <p class="tier-note">✦ 單一主力方案內容極豐富，社會公益連結是最大亮點</p>
+        </div></div>
+        <div class="tier-detail" id="dodo-2"><div class="tier-detail-inner">
+          <div class="tier-detail-name"><span class="price-chip">$1600</span>海豚守護神</div>
+          <ul class="tier-benefits"><li>包含 $100 全部福利</li><li>【感恩的心】我們每晚睡覺前會膜拜你，並且做夢時會夢到你！感謝你的付出幫助我們做更大的企劃！</li></ul>
+          <p class="tier-note">✦ 幽默感滿分的最高方案：誇張感謝表達最深認同</p>
+        </div></div>
+        <div class="key-value"><span class="key-value-label">核心策略</span><span class="key-value-text">公益慈善 10% ＋ 線下見面會 ＋ 幽默感謝</span></div>
+      </div>
+    </div>
+
+    <!-- 我都OK啊（攝影師頻道） -->
+    <div class="creator-card">
+      <div class="card-header">
+        <div class="avatar" style="background:var(--teal-pale);">📸</div>
+        <div class="creator-meta"><h3>我都OK啊（攝影師頻道）</h3><span class="platform-badge">▶ YouTube</span><span class="cat-tag p">專業技術</span><div class="subscribers">攝影專業頻道</div></div>
+      </div>
+      <div class="card-body">
+        <div class="tier-hint">↓ 點擊方案查看福利</div>
+        <div class="pricing-tiers">
+          <button class="tier-btn" onclick="toggleTier(this,'ok-1')"><span class="tier-price-label">$45</span><span class="tier-name-label">單一會籍</span></button>
         </div>
         <div class="tier-detail" id="ok-1"><div class="tier-detail-inner">
-          <div class="tier-detail-name"><span class="price-chip">$45</span>餵食計畫（單一方案）</div>
-          <ul class="tier-benefits"><li>專屬貼圖</li><li>專屬徽章</li><li>定位：「請創作者喝杯飲料」的輕鬆支持</li><li>無複雜階級設計，降低所有心理門檻</li></ul>
-          <p class="tier-note">✦ 時事吐槽頻道特性 → 低價策略吸引最大受眾基數</p>
+          <div class="tier-detail-name"><span class="price-chip">$45</span>單一會籍（內容極豐富）</div>
+          <ul class="tier-benefits">
+            <li>【攝影讀書會】每月針對一本攝影集或一位攝影師做介紹</li>
+            <li>【相機設置】針對各廠牌相機快捷鍵設置教學</li>
+            <li>【攝影研究所】「攝影小教室」深度延伸探討</li>
+            <li>【為什麼這麼拍？】「散步街拍」延伸，帶你進入攝影師視角</li>
+            <li>YouTube 專屬直播【週三八點半回放檔】【會員評圖直播】【會員修圖直播】</li>
+            <li>【會員專屬抽獎】不定期廠商及準備的好禮</li>
+            <li>【優先保留名額】線下攝影課、線下見面會優先名額</li>
+            <li>會員專屬 Discord 聊天群組</li>
+          </ul>
+          <p class="tier-note">✦ 單一低價但內容豐富：讀書會、評圖直播、Discord 社群全包</p>
         </div></div>
-        <div class="key-value"><span class="key-value-label">核心策略</span><span class="key-value-text">輕鬆無壓力的「投餵/打賞」邏輯</span></div>
+        <div class="key-value"><span class="key-value-label">核心策略</span><span class="key-value-text">專業攝影社群 ＋ 評圖直播 ＋ Discord</span></div>
+      </div>
+    </div>
+
+    <!-- 蒴老闆的辣雞湯 -->
+    <div class="creator-card">
+      <div class="card-header">
+        <div class="avatar" style="background:var(--teal-pale);">🌶️</div>
+        <div class="creator-meta"><h3>蒴老闆的辣雞湯（東京衣著）</h3><span class="platform-badge">▶ YouTube</span><span class="cat-tag k">知識觀點</span><div class="subscribers">職場成長頻道</div></div>
+      </div>
+      <div class="card-body">
+        <div class="tier-hint">↓ 點擊方案查看福利</div>
+        <div class="pricing-tiers">
+          <button class="tier-btn" onclick="toggleTier(this,'ragi-1')"><span class="tier-price-label">$200</span><span class="tier-name-label">小清新🥬</span></button>
+          <button class="tier-btn" onclick="toggleTier(this,'ragi-2')"><span class="tier-price-label">$300</span><span class="tier-name-label">小幸運😘</span></button>
+          <button class="tier-btn" onclick="toggleTier(this,'ragi-3')"><span class="tier-price-label">$450</span><span class="tier-name-label">小成長🍼</span></button>
+          <button class="tier-btn" onclick="toggleTier(this,'ragi-4')"><span class="tier-price-label">$600</span><span class="tier-name-label">小感恩🏆</span></button>
+        </div>
+        <div class="tier-detail" id="ragi-1"><div class="tier-detail-inner">
+          <div class="tier-detail-name"><span class="price-chip">$200</span>小清新會員 🥬</div>
+          <ul class="tier-benefits"><li>每月 2 集自我成長影片：職場加薪理財！</li></ul>
+        </div></div>
+        <div class="tier-detail" id="ragi-2"><div class="tier-detail-inner">
+          <div class="tier-detail-name"><span class="price-chip">$300</span>小幸運會員 😘</div>
+          <ul class="tier-benefits"><li>包含 $200 全部福利</li><li>每月 2 集自我成長影片 + 幸運 🌶️</li></ul>
+        </div></div>
+        <div class="tier-detail" id="ragi-3"><div class="tier-detail-inner">
+          <div class="tier-detail-name"><span class="price-chip">$450</span>小成長會員 🍼</div>
+          <ul class="tier-benefits"><li>包含上層全部福利</li><li>每月 4 集會員影片！職場 + 原生家庭！</li></ul>
+        </div></div>
+        <div class="tier-detail" id="ragi-4"><div class="tier-detail-inner">
+          <div class="tier-detail-name"><span class="price-chip">$600</span>小感恩會員 🏆</div>
+          <ul class="tier-benefits"><li>包含上層全部福利</li><li>每月 4 集會員影片 + 不定期禮物 🎁</li></ul>
+        </div></div>
+        <div class="key-value"><span class="key-value-label">核心策略</span><span class="key-value-text">職場 + 原生家庭影片 ＋ 不定期禮物</span></div>
+      </div>
+    </div>
+
+    <!-- Andy老師 -->
+    <div class="creator-card">
+      <div class="card-header">
+        <div class="avatar" style="background:var(--teal-pale);">🎯</div>
+        <div class="creator-meta"><h3>Andy 老師</h3><span class="platform-badge">▶ YouTube</span><span class="cat-tag k">知識觀點</span><div class="subscribers">教育類頻道</div></div>
+      </div>
+      <div class="card-body">
+        <div class="tier-hint">↓ 點擊方案查看福利</div>
+        <div class="pricing-tiers">
+          <button class="tier-btn" onclick="toggleTier(this,'andy-1')"><span class="tier-price-label">$45</span><span class="tier-name-label">An親班</span></button>
+          <button class="tier-btn" onclick="toggleTier(this,'andy-2')"><span class="tier-price-label">$150</span><span class="tier-name-label">An學院</span></button>
+        </div>
+        <div class="tier-detail" id="andy-1"><div class="tier-detail-inner">
+          <div class="tier-detail-name"><span class="price-chip">$45</span>An親班</div>
+          <ul class="tier-benefits"><li>搶先收看新影片</li><li>會員專屬聊天室</li><li>優先回覆會員留言</li><li>會員專屬意見調查</li></ul>
+        </div></div>
+        <div class="tier-detail" id="andy-2"><div class="tier-detail-inner">
+          <div class="tier-detail-name"><span class="price-chip">$150</span>An學院</div>
+          <ul class="tier-benefits"><li>包含 $45 全部福利</li><li>會員專屬影片</li><li>搶先收看新影片</li><li>會員專屬聊天室</li><li>會員專屬意見調查</li><li>優先回覆會員留言</li></ul>
+        </div></div>
+        <div class="key-value"><span class="key-value-label">核心策略</span><span class="key-value-text">搶先看 ＋ 專屬聊天室 ＋ 意見調查</span></div>
+      </div>
+    </div>
+
+    <!-- 真奈特每天都在瞎忙 -->
+    <div class="creator-card">
+      <div class="card-header">
+        <div class="avatar" style="background:var(--orange-pale);">😅</div>
+        <div class="creator-meta"><h3>真奈特每天都在瞎忙</h3><span class="platform-badge">▶ YouTube</span><span class="cat-tag l">生活療癒</span><div class="subscribers">生活類頻道</div></div>
+      </div>
+      <div class="card-body">
+        <div class="tier-hint">↓ 點擊方案查看福利</div>
+        <div class="pricing-tiers">
+          <button class="tier-btn" onclick="toggleTier(this,'nate-1')"><span class="tier-price-label">$75</span><span class="tier-name-label">真的Family</span></button>
+          <button class="tier-btn" onclick="toggleTier(this,'nate-2')"><span class="tier-price-label">$100</span><span class="tier-name-label">贊助便當</span></button>
+          <button class="tier-btn" onclick="toggleTier(this,'nate-3')"><span class="tier-price-label">$300</span><span class="tier-name-label">贊助交通費</span></button>
+        </div>
+        <div class="tier-detail" id="nate-1"><div class="tier-detail-inner">
+          <div class="tier-detail-name"><span class="price-chip">$75</span>真的 Family</div>
+          <ul class="tier-benefits"><li>留言和聊天室中顯示頻道會員徽章</li><li>留言和聊天室中使用自訂表情符號</li><li>加入會員 LINE 群組一起瞎忙一起廢話</li></ul>
+        </div></div>
+        <div class="tier-detail" id="nate-2"><div class="tier-detail-inner">
+          <div class="tier-detail-name"><span class="price-chip">$100</span>真的 Family 贊助便當！</div>
+          <ul class="tier-benefits"><li>包含 $75 全部福利</li><li>忠實會員徽章</li><li>表情符號</li><li>加入會員 LINE 群組一起瞎忙一起廢話</li></ul>
+        </div></div>
+        <div class="tier-detail" id="nate-3"><div class="tier-detail-inner">
+          <div class="tier-detail-name"><span class="price-chip">$300</span>真的 Family 贊助交通費！</div>
+          <ul class="tier-benefits"><li>包含上層全部福利</li><li>加入會員 LINE 群組一起瞎忙一起廢話</li></ul>
+          <p class="tier-note">✦ 三方案核心都是 LINE 群組，差異在徽章等級與支持金額</p>
+        </div></div>
+        <div class="key-value"><span class="key-value-label">核心策略</span><span class="key-value-text">LINE 群組社群 ＋ 輕鬆打賞概念</span></div>
       </div>
     </div>
 
@@ -613,18 +786,20 @@ footer { background: var(--cream); border-top: 1px solid var(--border); padding:
         </tr>
       </thead>
       <tbody>
-        <tr><td class="t-name">志祺七七</td><td class="t-cat-k">知識觀點</td><td>YouTube</td><td>~120萬</td><td class="t-price">$45 / $200 / $600</td><td>共同創作者</td><td>企劃討論參與權</td></tr>
-        <tr><td class="t-name">阿滴英文</td><td class="t-cat-k">知識觀點</td><td>PressPlay / YT</td><td>~281萬</td><td class="t-price">$50 / $150 / $300 / $800+</td><td>學習夥伴</td><td>數位講義 + 直播 Q&A</td></tr>
-        <tr><td class="t-name">敏迪選讀</td><td class="t-cat-k">知識觀點</td><td>嘖嘖 / 自有App</td><td>千人訂閱者</td><td class="t-price">$59 / $109 / $259</td><td>支持者</td><td>共享方案 + 無廣告App</td></tr>
-        <tr><td class="t-name">Cheap 歷史特派員</td><td class="t-cat-k">知識觀點</td><td>YouTube</td><td>~100萬</td><td class="t-price">$45 / $150 / $450+</td><td>品質推手</td><td>搶先看 + 支持研究員</td></tr>
-        <tr><td class="t-name">超認真少年</td><td class="t-cat-p">專業技術</td><td>YouTube</td><td>~50萬</td><td class="t-price">$60 / $300 / $750 / $3200</td><td>工業同好</td><td>線下尾牙 + 命名權</td></tr>
-        <tr><td class="t-name">異色檔案</td><td class="t-cat-p">專業技術</td><td>YouTube</td><td>~100萬</td><td class="t-price">$45 / $150 / $450</td><td>研究同好</td><td>禁忌案件私密直播</td></tr>
-        <tr><td class="t-name">老高與小茉</td><td class="t-cat-l">生活療癒</td><td>YouTube</td><td>~600萬</td><td class="t-price">$300（單一）</td><td>鐵粉</td><td>每週加更限定影片</td></tr>
-        <tr><td class="t-name">宇宙閨蜜分多奇</td><td class="t-cat-l">生活療癒</td><td>YouTube</td><td>~40萬</td><td class="t-price">$75 / $200 / $1600</td><td>閨蜜</td><td>見面會優先 + 直播</td></tr>
-        <tr><td class="t-name">The DoDoMen 嘟嘟門</td><td class="t-cat-l">生活療癒</td><td>YouTube</td><td>~60萬</td><td class="t-price">$75 / $150 / $300</td><td>挑戰夥伴</td><td>花絮 + 搶先看 + 投票</td></tr>
-        <tr><td class="t-name">壹加壹</td><td class="t-cat-l">生活療癒</td><td>YouTube</td><td>~80萬</td><td class="t-price">$60 / $150</td><td>好朋友</td><td>深夜電台私下直播</td></tr>
-        <tr><td class="t-name">浪浪別哭</td><td class="t-cat-l">生活療癒</td><td>官方平台</td><td>公益品牌</td><td class="t-price">$300 / $500 / $1000</td><td>毛孩守護者</td><td>助養計畫（社會公益）</td></tr>
-        <tr><td class="t-name">我都OK啊</td><td class="t-cat-l">生活療癒</td><td>YouTube</td><td>~30萬</td><td class="t-price">$45（單一）</td><td>飲料贊助者</td><td>零壓力單一方案</td></tr>
+        <tr><td class="t-name">志祺七七</td><td class="t-cat-k">知識觀點</td><td>YouTube</td><td>~120萬</td><td class="t-price">$75 / $250</td><td>乾爹娘</td><td>議題許願池 + 企劃真心話影片</td></tr>
+        <tr><td class="t-name">阿滴</td><td class="t-cat-k">知識觀點</td><td>YouTube</td><td>~281萬</td><td class="t-price">$100 / $600</td><td>學習旅行夥伴</td><td>Podcast《滴scussion》+ 實體旅遊明信片</td></tr>
+        <tr><td class="t-name">Cheap 歷史特派員</td><td class="t-cat-k">知識觀點</td><td>YouTube</td><td>~100萬</td><td class="t-price">$30 / $75 / $300 / $750 / $1600</td><td>歷史同好</td><td>客製化賀卡 + 影片主題決定權</td></tr>
+        <tr><td class="t-name">蒴老闆的辣雞湯</td><td class="t-cat-k">知識觀點</td><td>YouTube</td><td>職場頻道</td><td class="t-price">$200 / $300 / $450 / $600</td><td>成長夥伴</td><td>每月 2–4 集專屬影片 + 不定期禮物</td></tr>
+        <tr><td class="t-name">Andy 老師</td><td class="t-cat-k">知識觀點</td><td>YouTube</td><td>教育頻道</td><td class="t-price">$45 / $150</td><td>學生</td><td>搶先看 + 專屬聊天室 + 意見調查</td></tr>
+        <tr><td class="t-name">超認真少年</td><td class="t-cat-p">專業技術</td><td>YouTube</td><td>~50萬</td><td class="t-price">$60 / $300 / $750 / $3,200</td><td>工業同好</td><td>命名權 + 律師諮詢 + 線下尾牙</td></tr>
+        <tr><td class="t-name">異色檔案</td><td class="t-cat-p">專業技術</td><td>YouTube</td><td>~100萬</td><td class="t-price">$75 / $100 / $300</td><td>研究同好</td><td>★黃標★禁忌影片 + 月報</td></tr>
+        <tr><td class="t-name">我都OK啊（攝影）</td><td class="t-cat-p">專業技術</td><td>YouTube</td><td>攝影頻道</td><td class="t-price">$45（單一）</td><td>攝影社群</td><td>評圖直播 + 讀書會 + Discord</td></tr>
+        <tr><td class="t-name">老高與小茉</td><td class="t-cat-l">生活療癒</td><td>YouTube</td><td>~600萬</td><td class="t-price">$75 / $100 / $150 / $300</td><td>抬頭團成員</td><td>累積式專屬影片系列 + 身份命名</td></tr>
+        <tr><td class="t-name">壹加壹</td><td class="t-cat-l">生活療癒</td><td>YouTube</td><td>~80萬</td><td class="t-price">$75 / $300 / $3200</td><td>好朋友</td><td>花絮影片 + 一粒海外伴手禮</td></tr>
+        <tr><td class="t-name">宇宙閨蜜（身心靈）</td><td class="t-cat-l">生活療癒</td><td>YouTube</td><td>~40萬</td><td class="t-price">$100 / $300 / $3200</td><td>閨蜜瓜瓜</td><td>身心靈電子報 + 直播 + 活動優先</td></tr>
+        <tr><td class="t-name">DoDoMen 嘟嘟門</td><td class="t-cat-l">生活療癒</td><td>YouTube</td><td>~60萬</td><td class="t-price">$100 / $1600</td><td>海豚大使</td><td>公益慈善 10% + 線下見面會（一年兩次）</td></tr>
+        <tr><td class="t-name">浪浪別哭</td><td class="t-cat-l">生活療癒</td><td>YouTube</td><td>公益品牌</td><td class="t-price">$100 / $200 / $300 / $750 / $1600 / $3200</td><td>毛孩守護者</td><td>六層細緻設計 + 實體聚餐</td></tr>
+        <tr><td class="t-name">真奈特每天都在瞎忙</td><td class="t-cat-l">生活療癒</td><td>YouTube</td><td>生活頻道</td><td class="t-price">$75 / $100 / $300</td><td>Family</td><td>LINE 群組社群為核心</td></tr>
       </tbody>
     </table>
   </div>
@@ -670,57 +845,134 @@ footer { background: var(--cream); border-top: 1px solid var(--border); padding:
 
 <!-- RECOMMENDATION -->
 <section id="recommendation">
-  <div class="section-label">FOR 單程旅行社</div>
-  <h2 class="section-title">給「單程旅行社」的規劃藍圖</h2>
-  <div class="rec-section">
-    <div class="rec-label">MEMBERSHIP BLUEPRINT — 單程旅行社</div>
-    <div class="rec-title">以「生命陪伴」為核心的三層方案設計</div>
-    <div class="rec-cards">
-      <div class="rec-card">
-        <span class="rec-price">$75</span>
-        <div class="rec-tier-name">🕯 同行者 / 點燈人</div>
-        <ul class="rec-features">
-          <li>專屬勳章與貼圖</li>
-          <li>會員身份認同感</li>
-          <li>參與「生命教育」推廣的象徵</li>
-          <li>讓支持門檻最低化</li>
-        </ul>
-        <div class="rec-ref">REF → 志祺七七 $45 邏輯 + 我都OK啊無壓力感</div>
-      </div>
-      <div class="rec-card">
-        <span class="rec-price">$180</span>
-        <div class="rec-tier-name">🌸 生命領航員</div>
-        <ul class="rec-features">
-          <li>未公開採訪片段（感性深度內容）</li>
-          <li>月度「好好道別」Q&A 直播</li>
-          <li>回應觀眾對身後事的私密疑問</li>
-          <li>製作幕後花絮與團隊日常</li>
-        </ul>
-        <div class="rec-ref">REF → 異色檔案私密直播 + 阿滴陪伴學習邏輯</div>
-      </div>
-      <div class="rec-card">
-        <span class="rec-price">$1000+</span>
-        <div class="rec-tier-name">✨ 引路人</div>
-        <ul class="rec-features">
-          <li>線下座談會 / 工作坊優先席次</li>
-          <li>年度追思會 / 生死教育工作坊</li>
-          <li>可帶一位親友同行</li>
-          <li>與創辦人的私下對談機會</li>
-        </ul>
-        <div class="rec-ref">REF → 超認真少年線下尾牙 + 浪浪別哭社會價值框架</div>
-      </div>
+  <div class="section-label">STRATEGIC RECOMMENDATIONS</div>
+  <h2 class="section-title">深度對比後的優化建議</h2>
+
+  <!-- COMPARISON CALLOUTS -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px;">
+    <div style="padding:22px;border:1px solid var(--border);background:white;">
+      <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--gray);margin-bottom:10px;">變現邏輯</div>
+      <div style="font-family:'Noto Serif TC',serif;font-size:15px;font-weight:900;margin-bottom:10px;">方案導向，非內容補貼</div>
+      <p style="font-size:12px;color:var(--gray);line-height:1.7;">志祺、老高等靠數萬人低額訂閱補貼製作費。單程旅行社的核心價值是「解決生命焦慮」，$2,000 陪跑計畫定位更接近顧問 / 線上教育，客單價遠高於娛樂型。</p>
+    </div>
+    <div style="padding:22px;border:1px solid var(--border);background:white;">
+      <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--gray);margin-bottom:10px;">社群凝聚力</div>
+      <div style="font-family:'Noto Serif TC',serif;font-size:15px;font-weight:900;margin-bottom:10px;">隱私陪伴是獨特優勢</div>
+      <p style="font-size:12px;color:var(--gray);line-height:1.7;">異色檔案、宇宙閨蜜使用 YouTube 直播互動，相對公開。單程旅行社採用 Line 社群——殯葬與生命議題需要「隱私性」與「安全感」，這是娛樂型頻道無法複製的。</p>
+    </div>
+    <div style="padding:22px;border:1px solid var(--border);background:white;">
+      <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--gray);margin-bottom:10px;">實體載體</div>
+      <div style="font-family:'Noto Serif TC',serif;font-size:15px;font-weight:900;margin-bottom:10px;">行李包是強力留存工具</div>
+      <p style="font-size:12px;color:var(--gray);line-height:1.7;">超認真少年靠線下尾牙，浪浪別哭靠店內優惠製造實體感。單程旅行社的「行李包」是可觸摸的情感載體，能大幅提升會員的留存率（Retention Rate）。</p>
     </div>
   </div>
-  <div class="two-col">
-    <div class="info-card">
-      <div class="info-card-label">PLATFORM SUGGESTION</div>
-      <div class="info-card-title">建議從 YouTube 會員起步</div>
-      <p class="info-card-desc">初期以 YouTube 內建會員系統降低摩擦，穩定後再考慮嘖嘖或自有平台分流。重點是先建立「願意付費的粉絲」基礎，再談平台遷移。</p>
+
+  <!-- ACTIONABLE RECOMMENDATIONS -->
+  <div class="rec-new">
+    <div class="rec-new-header">
+      <div class="rec-new-eyebrow">ACTIONABLE ROADMAP</div>
+      <div class="rec-new-title">四項具體行動建議</div>
     </div>
-    <div class="info-card">
-      <div class="info-card-label">VALUE PROPOSITION</div>
-      <div class="info-card-title">讓支持「單程」是一種價值投資</div>
-      <p class="info-card-desc">參考浪浪別哭的邏輯——讓訂閱行為本身具備社會意義。支持單程旅行社，就是在推廣正確的生命教育，是一份對社會的禮物。</p>
+    <div class="rec-timeline">
+      <div class="rec-item priority-high">
+        <div class="rec-dot">🎯</div>
+        <div class="rec-item-body">
+          <div class="rec-item-title">填補中價位缺口（最優先）</div>
+          <div class="rec-item-desc">目前 $75 直跳 $2,000，缺乏「試水溫」的過渡方案。參考阿滴（$300 學習增量）與敏迪（$109 雙人共享）的邏輯，設計每月 $300–$500 的進階數位方案。內容建議：每月一次「冬瓜社長私密線上座談」或「喪葬禮俗數位百科查閱權」。這是轉化率最高的黃金區間。</div>
+          <div class="rec-item-tags">
+            <span class="rec-item-tag">參考 → 阿滴 $300</span>
+            <span class="rec-item-tag">參考 → 敏迪 $109</span>
+            <span class="rec-item-tag">優先級：最高</span>
+          </div>
+        </div>
+      </div>
+      <div class="rec-item priority-high">
+        <div class="rec-dot">🏷️</div>
+        <div class="rec-item-body">
+          <div class="rec-item-title">強化 $75 會員的身份標籤</div>
+          <div class="rec-item-desc">目前 95 位核心鐵粉的回饋集中在「貼圖」，可能是低轉化的原因之一。參考老高「五歲抬頭團」與超認真少年的階層命名，給予更響亮的名稱如「生命導航員」或「終點旅行者」。同時加入每月一次「專屬 Q&A 貼文」或「影片首播搶先討論」，讓 $75 這個入口更有感。</div>
+          <div class="rec-item-tags">
+            <span class="rec-item-tag">參考 → 老高五歲抬頭團</span>
+            <span class="rec-item-tag">參考 → 超認真少年命名</span>
+            <span class="rec-item-tag">優先級：高</span>
+          </div>
+        </div>
+      </div>
+      <div class="rec-item">
+        <div class="rec-dot">🤝</div>
+        <div class="rec-item-body">
+          <div class="rec-item-title">異業合作加持——讓訂閱費成為「服務預約金」</div>
+          <div class="rec-item-desc">參考浪浪別哭的「訂閱 = 社會行動」邏輯。利用單程旅行社在殯葬專業的地位，讓會員享有特定禮儀用品、生前契約諮詢或法律服務的「專屬折扣」或「優先預約權」。這會讓訂閱費從「支持創作者」升級為「為自己和家人預先規劃」的實用投資。</div>
+          <div class="rec-item-tags">
+            <span class="rec-item-tag">參考 → 浪浪別哭公益連結</span>
+            <span class="rec-item-tag">參考 → 超認真少年律師諮詢</span>
+            <span class="rec-item-tag">優先級：中</span>
+          </div>
+        </div>
+      </div>
+      <div class="rec-item">
+        <div class="rec-dot">📊</div>
+        <div class="rec-item-body">
+          <div class="rec-item-title">針對 95 位核心粉絲進行問卷調研</div>
+          <div class="rec-item-desc">在推出新方案之前，建議先向現有 95 位鐵粉發送一份短問卷，了解他們對「中價位方案（$300–$500）」的接受度、最想要的福利內容，以及推薦頻道給他人的意願（NPS）。這批人的回饋是最精準的市場驗證，遠勝於任何假設。</div>
+          <div class="rec-item-tags">
+            <span class="rec-item-tag">工具 → Google Forms</span>
+            <span class="rec-item-tag">工具 → Line 社群投票</span>
+            <span class="rec-item-tag">優先級：中</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TIER PROPOSAL -->
+    <div class="tier-proposal">
+      <div class="tier-proposal-card current">
+        <div class="tp-badge">現行方案</div>
+        <div class="tp-price">$75</div>
+        <div class="tp-name">🕯 基礎支持</div>
+        <ul class="tp-features">
+          <li>專屬勳章</li>
+          <li>自訂貼圖</li>
+          <li>歸屬感認同</li>
+        </ul>
+        <div class="tp-ref">現有 95 人</div>
+      </div>
+      <div class="tier-proposal-card new">
+        <div class="tp-badge">建議新增</div>
+        <div class="tp-price">$300</div>
+        <div class="tp-name">🌸 生命領航員</div>
+        <ul class="tp-features">
+          <li>月度私密線上座談</li>
+          <li>喪葬禮俗數位百科</li>
+          <li>幕後花絮影片</li>
+          <li>Line 社群專屬討論</li>
+        </ul>
+        <div class="tp-ref">REF → 阿滴 $300 / 異色檔案 $150</div>
+      </div>
+      <div class="tier-proposal-card current">
+        <div class="tp-badge">現行方案</div>
+        <div class="tp-price">$2,000</div>
+        <div class="tp-name">✨ VIP 陪跑計畫</div>
+        <ul class="tp-features">
+          <li>實體行李包</li>
+          <li>每週書寫帶領</li>
+          <li>Line 社群</li>
+          <li>專家媒合</li>
+        </ul>
+        <div class="tp-ref">嘖嘖年費制</div>
+      </div>
+      <div class="tier-proposal-card new">
+        <div class="tp-badge">建議新增</div>
+        <div class="tp-price">$1,000+</div>
+        <div class="tp-name">🌟 引路人</div>
+        <ul class="tp-features">
+          <li>線下座談優先席次</li>
+          <li>可帶一位親友同行</li>
+          <li>年度追思會</li>
+          <li>創辦人私下對談</li>
+        </ul>
+        <div class="tp-ref">REF → 超認真少年 $3200 棟樑</div>
+      </div>
     </div>
   </div>
 </section>
